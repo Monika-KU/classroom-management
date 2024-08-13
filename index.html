@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="principal-view">
+        <h1>Principal Dashboard</h1>
+        <section>
+            <h2>Create Classroom</h2>
+            <form id="create-classroom-form">
+                <label for="classroom-name">Classroom Name:</label>
+                <input type="text" id="classroom-name" name="classroom-name" required>
+                <label for="start-time">Start Time:</label>
+                <input type="time" id="start-time" name="start-time" required>
+                <label for="end-time">End Time:</label>
+                <input type="time" id="end-time" name="end-time" required>
+                <label for="days">Days:</label>
+                <input type="text" id="days" name="days" placeholder="e.g., Monday to Saturday" required>
+                <button type="submit">Create Classroom</button>
+            </form>
+        </section>
+        <section>
+            <h2>Teachers</h2>
+            <table id="teachers-table">
+            </table>
+        </section>
+        <section>
+            <h2>Students</h2>
+            <table id="students-table">
+            </table>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
