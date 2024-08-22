@@ -1,33 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); 
 const app = express();
-const PORT = process.env.PORT || 5000;
+app.use(cors({
+  origin: 'http://localhost:3000', 
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type'
+}));
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 5000;
 let classrooms = [];
-let teachers = [];
-let students = [];
-app.get('/api/classrooms', (req, res) => res.json(classrooms));
+app.get('/api/classrooms', (req, res) => {
+  res.json(classrooms);
+});
 app.post('/api/classrooms', (req, res) => {
-    const { name, startTime, endTime, days } = req.body;
-    const newClassroom = { name, startTime, endTime, days };
-    classrooms.push(newClassroom);
-    res.status(201).json(newClassroom);
-});
-app.get('/api/teachers', (req, res) => res.json(teachers));
-app.post('/api/teachers', (req, res) => {
-    const { name, email } = req.body;
-    const newTeacher = { name, email };
-    teachers.push(newTeacher);
-    res.status(201).json(newTeacher);
-});
-app.get('/api/students', (req, res) => res.json(students));
-app.post('/api/students', (req, res) => {
-    const { name, email } = req.body;
-    const newStudent = { name, email };
-    students.push(newStudent);
-    res.status(201).json(newStudent);
+  const { name, startTime, endTime, days } = req.body;
+  const newClassroom = { name, startTime, endTime, days };
+  classrooms.push(newClassroom);
+  res.status(201).json(newClassroom);
 });
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
+
 
